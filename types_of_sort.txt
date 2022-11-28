@@ -1,0 +1,27 @@
+# быстрая сортировка
+def quick_sort(a):
+    if len(a) <= 1:
+        return a
+    x = a[len(a) // 2]
+    more, equal, less = [], [], []
+    for i in range(len(a)):
+        if a[i] > x:
+            more.append(a[i])
+        elif a[i] < x:
+            less.append(a[i])
+        else:
+            equal.append(a[i])
+        return quick_sort(less) + equal + quick_sort(more)
+
+
+# сортировка расческой
+def comb_sort(step, a):
+    if step < 1:
+        return a
+        for i in range(len(a)):
+            if i + step == len(a):
+                break
+            if a[i] > a[i + step]:
+                a[i], a[i + step] = a[i + step], a[i]
+                step -= 1
+                return comb_sort(step, a)

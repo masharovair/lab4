@@ -1,0 +1,19 @@
+from random import randint
+import types_of_sort
+from timeit import default_timer
+
+nums = [randint(1, 1000) for i in range(int(input('Введите количество элементов: ')))]
+s = input('1) сортировка расческой '
+          '2) быстрая сортировка: ')
+print('Исходный массив: ', *nums)
+while s != '1' and s != '2':
+    s = input('Повторите ввод: ')
+if s == '1':
+    time0 = default_timer()
+    sorted_nums = types_of_sort.comb_sort(len(nums) - 1, nums)
+    time1 = default_timer()
+elif s == '2':
+    time0 = default_timer()
+    sorted_nums = types_of_sort.quick_sort(nums)
+    time1 = default_timer()
+print('Отстортированный массив: ', *sorted_nums, '\nЗатраченное время: ', abs(time0 - time1))
